@@ -1,0 +1,35 @@
+---
+layout: default
+title: "arecored"
+date: 2021-06-25 18:12:13 +02:00
+---
+{% raw %}
+<h2 id="arecored">
+  <a href="/zh/linux/arecored.html">arecored</a> <a href="#arecored"><svg class="icon">
+    <use href="/assets/images/unicode_sprite.svg#link" />
+  </svg></a>
+</h2>
+> ALSA 声卡驱动的声音录制器。
+> 更多信息：<https://manned.org/aplay>.
+
+#### 以 "CD" 质量录制一段声音（录制结束以 Ctrl-C 停止）：
+```shell
+arecord -vv --format=cd {{路径/文件名.wav}}
+```
+#### 以 "CD" 质量录制 10 秒钟声音：
+```shell
+arecord -vv --format=cd --duration={{10}} {{路径/文件名.wav}}
+```
+#### 录制一段声音并以 mp3 格式保存（录制结束以 Ctrl-C 停止）：
+```shell
+arecord -vv --format=cd --file-type raw | lame -r - {{路径/文件名.mp3}}
+```
+#### 列出所有的声卡和数字音频设备：
+```shell
+arecord --list-devices
+```
+#### 允许交互式界面（例如使用空格键或回车键来播放或暂停）：
+```shell
+arecord --interactive
+```
+{% endraw %}

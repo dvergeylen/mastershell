@@ -1,0 +1,36 @@
+---
+layout: default
+title: "csplit"
+date: 2021-06-25 18:12:13 +02:00
+---
+{% raw %}
+<h2 id="csplit">
+  <a href="/en/linux/csplit.html">csplit</a> <a href="#csplit"><svg class="icon">
+    <use href="/assets/images/unicode_sprite.svg#link" />
+  </svg></a>
+</h2>
+> Split a file into pieces.
+> This generates files named "xx00", "xx01", and so on.
+> More information: <https://www.gnu.org/software/coreutils/csplit>.
+
+#### Split a file at lines 5 and 23:
+```shell
+csplit {{file}} {{5}} {{23}}
+```
+#### Split a file every 5 lines (this will fail if the total number of lines is not divisible by 5):
+```shell
+csplit {{file}} {{5}} {*}
+```
+#### Split a file every 5 lines, ignoring exact-division error:
+```shell
+csplit -k {{file}} {{5}} {*}
+```
+#### Split a file at line 5 and use a custom prefix for the output files:
+```shell
+csplit {{file}} {{5}} -f {{prefix}}
+```
+#### Split a file at a line matching a regular expression:
+```shell
+csplit {{file}} /{{regular_expression}}/
+```
+{% endraw %}

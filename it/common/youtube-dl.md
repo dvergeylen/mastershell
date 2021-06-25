@@ -1,0 +1,47 @@
+---
+layout: default
+title: "youtube-dl"
+date: 2021-06-25 18:12:13 +02:00
+---
+{% raw %}
+<h2 id="youtube-dl">
+  <a href="/it/common/youtube-dl.html">youtube-dl</a> <a href="#youtube-dl"><svg class="icon">
+    <use href="/assets/images/unicode_sprite.svg#link" />
+  </svg></a>
+</h2>
+> Scarica video da YouTube ed altri siti web.
+> Maggiori informazioni: <http://rg3.github.io/youtube-dl/>.
+
+#### Scarica un video od una playlist:
+```shell
+youtube-dl '{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}'
+```
+#### Elenca tutti i formati in cui un video od una playlist sono disponibili:
+```shell
+youtube-dl --list-formats '{{https://www.youtube.com/watch?v=Mwa0_nE9H7A}}'
+```
+#### Scarica un video od una playlist con la qualità specificata:
+```shell
+youtube-dl --format "{{best[height<=480]}}" '{{https://www.youtube.com/watch?v=oHg5SJYRHA0}}'
+```
+#### Scarica l'audio di un video e lo converte in file MP3:
+```shell
+youtube-dl -x --audio-format {{mp3}} '{{url}}'
+```
+#### Scarica l'audio di migliore qualità e il video di migliore qualità e li unisce:
+```shell
+youtube-dl -f bestvideo+bestaudio '{{url}}'
+```
+#### Scarica una playlist di video e li salva come file MP4 dai nomi personalizzati:
+```shell
+youtube-dl --format {{mp4}} -o "{{%(title)s di %(uploader)s del %(upload_date)s in %(playlist)s.%(ext)s}}" '{{url}}'
+```
+#### Scarica, assieme al video, i sottotitoli in una lingua specificata:
+```shell
+youtube-dl --sub-lang {{it}} --write-sub '{{https://www.youtube.com/watch?v=Mwa0_nE9H7A}}'
+```
+#### Scarica una playlist, ne estrae l'audio e lo salva in formato mp3:
+```shell
+youtube-dl -i --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s" '{{url_della_playlist}}'
+```
+{% endraw %}
